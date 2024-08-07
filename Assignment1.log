@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2024.8.2)  5 AUG 2024 18:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2024.8.2)  7 AUG 2024 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Assignment1.tex
-(./Assignment1.tex
+**assignment1.tex
+(./assignment1.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-01-16>
 (/usr/share/texlive/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
@@ -1216,9 +1216,8 @@ LaTeX Font Info:    Trying to load font information for OT1+txr on input line 5
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
-)
-No file Assignment1.aux.
-\openout1 = `Assignment1.aux'.
+) (./assignment1.aux)
+\openout1 = `assignment1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 51.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
@@ -1334,35 +1333,37 @@ LaTeX Info: Redefining \ohm on input line 51.
 Package gensymb Info: Using \textohm for \ohm on input line 51.
 Package gensymb Info: Using \textmu for \micro on input line 51.
 Package hyperref Info: Link coloring OFF on input line 51.
+
+(./assignment1.out) (./assignment1.out)
 \@outlinefile=\write5
-\openout5 = `Assignment1.out'.
+\openout5 = `assignment1.out'.
 
 LaTeX Font Info:    Trying to load font information for U+txsya on input line 6
-9.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for U+txsyb on input line 6
-9.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for U+txmia on input line 6
-9.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for U+txsyc on input line 6
-9.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for TS1+txr on input line 6
-9.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
@@ -1374,7 +1375,7 @@ m/it/12 ^^^ [][] ^^^
  []
 
 
-Overfull \hbox (12.7591pt too wide) detected at line 148
+Overfull \hbox (12.7591pt too wide) detected at line 151
 \OML/txmi/m/it/12 S[] \OT1/txr/m/n/12 = [] []  \OML/txmi/m/it/12 and  T[] \OT1/
 txr/m/n/12 = [] []
  []
@@ -1383,26 +1384,20 @@ txr/m/n/12 = [] []
 
 
 ]
-Underfull \hbox (badness 2197) in paragraph at lines 193--194
+Underfull \hbox (badness 2197) in paragraph at lines 197--198
 []\OT1/txr/m/n/12 The in-te-rior an-gles of a poly-gon are in
  []
 
 [2
 
-] (./Assignment1.aux)
-
-Package rerunfilecheck Warning: File `Assignment1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Assignment1.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+] (./assignment1.aux)
+Package rerunfilecheck Info: File `assignment1.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30663 strings out of 476091
- 602536 string characters out of 5794082
- 1899330 words of memory out of 5000000
+ 30669 strings out of 476091
+ 602632 string characters out of 5794082
+ 1900330 words of memory out of 5000000
  50325 multiletter control sequences out of 15000+600000
  572250 words of font info for 150 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
@@ -1414,7 +1409,7 @@ t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
 fonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Assignment1.pdf (2 pages, 52606 bytes).
+Output written on assignment1.pdf (2 pages, 52608 bytes).
 PDF statistics:
  130 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams
