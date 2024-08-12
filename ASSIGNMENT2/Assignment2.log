@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.8.7)  10 AUG 2024 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.8.7)  12 AUG 2024 10:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1176,8 +1176,7 @@ LaTeX Font Info:    Trying to load font information for OT1+txr on input line 5
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
-)
-No file Assignment2.aux.
+) (./Assignment2.aux)
 \openout1 = `Assignment2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 52.
@@ -1309,6 +1308,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
 LaTeX Info: Redefining \nameref on input line 52.
+
+(./Assignment2.out) (./Assignment2.out)
 \@outlinefile=\write5
 \openout5 = `Assignment2.out'.
 
@@ -1352,19 +1353,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--99
 ] [2
 
 ] (./Assignment2.aux)
-
-Package rerunfilecheck Warning: File `Assignment2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Assignment2.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `Assignment2.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29877 strings out of 478287
- 588131 string characters out of 5849290
- 883386 words of memory out of 5000000
+ 29883 strings out of 478287
+ 588227 string characters out of 5849290
+ 883607 words of memory out of 5000000
  47368 multiletter control sequences out of 15000+600000
  525476 words of font info for 140 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
