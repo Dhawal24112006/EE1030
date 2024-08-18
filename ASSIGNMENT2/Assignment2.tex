@@ -1,7 +1,22 @@
 %iffalse
-\let\negmedspace\undefined
-\let\negthickspace\undefined
-\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+
+%\usepackage[a5paper, top=10mm, bottom=10mm, left=10mm, right=10mm]{geometry}
+
+%
+\setlength{\intextsep}{10pt} % Space between text and floats
+
+\makeindex
+
+
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{algorithmic}
@@ -19,7 +34,7 @@
 \usepackage{listings}
 \usepackage{multicol}
 \usepackage{xparse}
-\usepackage{gvv}                                        
+\usepackage{gvv}
 %\def\inputGnumericTable{}                                 
 \usepackage[latin1]{inputenc}                                
 \usepackage{color}                                            
@@ -34,6 +49,7 @@
 \usepackage{array}
 \usepackage{float}
 
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{problem}{Problem}
 \newtheorem{proposition}{Proposition}[section]
@@ -47,34 +63,52 @@
 \theoremstyle{remark}
 
 
-
-% Marks the beginning of the document
 \begin{document}
 \bibliographystyle{IEEEtran}
-\vspace{3cm}
+\onecolumn
 
 \title{Chapter 13 Properties of Triangle}
 \author{ee24btech11015 - Dhawal}
 \maketitle
-\newpage
-\bigskip
 
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
 
-\begin{enumerate}[start =3]
-        
-    \item The sum of the radii of inscribed and circumscribed circles for an n sided regular polygon of side $a$, is  \hfill{(2003)}
-\begin{multicols}{2}
+\section*{B. JEE Main / AIEEE}
 \begin{enumerate}
-        \item $\frac{a}{4} \cot{\brak{\frac{\pi}{2n}}}$                    
+	\item The sides of a triangle are $3x+4y,4x+3y \text{ and } 5x+5y \text{ where } x,y>0$ then the triangle is \hfill\brak{2002}
+
+\begin{multicols}{4}
+\begin{enumerate}
+\item right angled
+\item obtuse angled
+\item equilateral
+\item none of these
+\end{enumerate}
+\end{multicols}
+
+    \item In a triangle with sides $a,b,c,r_1>r_2>r_3$ (which are ex-radius) then \hfill\brak{2002}
+
+\begin{multicols}{4}
+\begin{enumerate}
+\item $a>b>c$
+\item $a<b<c$
+\item $a>b \text{ and } b<c$
+\item $a<b \text{ and } b>c$
+\end{enumerate}
+\end{multicols}
+        
+    \item The sum of the radii of inscribed and circumscribed circles for an $n$ sided regular polygon of side $a$, is \hfill\brak{2003}
+\begin{multicols}{4}
+\begin{enumerate}
+        \item $\frac{a}{4} \cot{\brak{\frac{\pi}{2n}}}$         
         \item $ a \cot{\brak{\frac{\pi}{n}}}$ 
         \item $\frac{a}{2} \cot{\brak{\frac{\pi}{2n}}}$ 
         \item $ a \cot{\brak{\frac{\pi}{2n}}}$
 \end{enumerate}
 \end{multicols}
 
-\item In a triangle ABC, medians AD and BE are drawn. If $AD=4, \angle{DAB}=\frac{\pi}{6}\:and\:\angle{ABE}=\frac{\pi}{3},$ then the area of the $\Delta{ABC}$ is \hfill{(2003)}
+\item In a triangle $\vec{ABC}$, medians $\vec{AD}$ and $\vec{BE}$ are drawn. If $\vec{AD}=4,\angle{\vec{DAB}}=\frac{\pi}{6} \text{ and } \angle{\vec{ABE}}=\frac{\pi}{3},$ then the area of the $\Delta{\vec{ABC}}$ is \hfill\brak{2003}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $\frac{64}{3}$                    
@@ -84,8 +118,8 @@
 \end{enumerate}
 \end{multicols} 
 
-\item If in $\Delta{ABC}\;a\cos^2\brak{\frac{C}{2}} + c\cos^2\brak{\frac{A}{2}} = \frac{3b}{2},$ then the sides $a,b\;and\;c$ \hfill{(2003)}
-\begin{multicols}{2}
+\item If in $\Delta{\vec{ABC}}\;a\cos^2\brak{\frac{\vec{C}}{2}} + c\cos^2\brak{\frac{\vec{A}}{2}} = \frac{3b}{2},$ then the sides $a,b\text{ and }c$ \hfill\brak{2003}
+\begin{multicols}{4}
 \begin{enumerate}
         \item satisfy $a+b=c$                    
         \item are in A.P. 
@@ -94,7 +128,7 @@
 \end{enumerate}
 \end{multicols} 
 
-\item The sides of a triangle are $\sin\alpha,\cos\alpha\;and\;\sqrt{1+\sin\alpha\cos\alpha}$ for some $0<\alpha<\frac{\pi}{2}.$ Then the greatest angle of the triangle is \hfill{(2004)}
+\item The sides of a triangle are $\sin\alpha,\cos\alpha \text{ ad } \sqrt{1+\sin\alpha\cos\alpha}$ for some $0<\alpha<\frac{\pi}{2}.$ Then the greatest angle of the triangle is \hfill\brak{2004}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $150\degree$                    
@@ -104,7 +138,9 @@
 \end{enumerate}
 \end{multicols} 
 
-\item A person standing on the bank of a river observes that the angle of elevation of the top of a tree on the opposite bank of the river is $60\degree$ and when he retires $40$ meters away from the tree, the angle of elevation becomes $30\degree$. The breadth of the river is \hfill{(2004)}
+\item A person standing on the bank of a river observes that the angle of elevation of the top of a tree on the opposite bank of the river is $60\degree$ and when he retires $40$ meters away from the tree, the angle of elevation becomes $30\degree$. The breadth of the river is 
+
+\hfill\brak{2004}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $60m$                    
@@ -114,7 +150,7 @@
 \end{enumerate}
 \end{multicols} 
 
-\item In a triangle $ABC$, let $\angle{C}=\frac{\pi}{2}.$ If $r$ is the inradius and $R$ is the circumradius of the triangle $ABC,$ then $2\brak{R+r}$ equals \hfill{(205)}
+\item In a triangle $ABC$, let $\angle{C}=\frac{\pi}{2}.$ If $r$ is the inradius and $R$ is the circumradius of the triangle $ABC,$ then $2\brak{R+r}$ equals \hfill\brak{2005}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $b+c$                    
@@ -124,8 +160,8 @@
 \end{enumerate}
 \end{multicols} 
 
-\item If in a $\Delta ABC,$ let the altitudes from the vertices $A,B,C$ on opposite sides are in H.P., then $\sin A,\sin B,\sin C$ are in \hfill{(2005)}
-\begin{multicols}{2}
+\item If in a $\Delta ABC,$ let the altitudes from the vertices $\vec{A,B,C}$ on opposite sides are in H.P., then $\sin \vec{A},\sin \vec{B},\sin \vec{C}$ are in \hfill\brak{2005}
+\begin{multicols}{4}
 \begin{enumerate}
         \item $G.P.$                    
         \item $A.P.$ 
@@ -134,7 +170,7 @@
 \end{enumerate}
 \end{multicols} 
 
-\item A tower stand at the centre of a circular park. A and B are two points on the boundary of the park such that $AB\brak{=a}$ subtends an angle of $60\degree$ at the foot of the tower, and the angle of elevation of the top of the tower from A or B is $30\degree.$ The height of the tower is \hfill{(2007)}
+\item A tower stand at the centre of a circular park. $\vec{A}$ and $\vec{B}$ are two points on the boundary of the park such that $\vec{AB}\brak{=a}$ subtends an angle of $60\degree$ at the foot of the tower, and the angle of elevation of the top of the tower from $\vec{A}$ or $\vec{B}$ is $30\degree.$ The height of the tower is \hfill\brak{2007}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $\frac{a}{\sqrt{3}}$                    
@@ -144,26 +180,28 @@
 \end{enumerate}
 \end{multicols} 
 
-\item AB is a vertical pole with B at the ground level and A at the top. A man finds that the angle of elevation the the point A from a certain point C on the ground is $60\degree.$ He moves away from the pole along the line BC to a point D such that $CD=7m.$ From D the angle of elevation of point A is $45\degree.$ Then the height of the pole is  \hfill{(2008)}
-\begin{multicols}{2}
+\item $\vec{AB}$ is a vertical pole with $\vec{B}$ at the ground level and $\vec{A}$ at the top. A man finds that the angle of elevation the the point $\vec{A}$ from a certain point $\vec{C}$ on the ground is $60\degree.$ He moves away from the pole along the line $\vec{BC}$ to a point $\vec{D}$ such that $\vec{CD}=7m.$ From $\vec{D}$ the angle of elevation of point $\vec{A}$ is $45\degree.$ Then the height of the pole is  
+
+\hfill\brak{2008}
+\begin{multicols}{4}
 \begin{enumerate}
-        \item $\frac{7\sqrt{3}}{2}\frac{1}{\sqrt{3}-1}m$                   
+        \item $\frac{7\sqrt{3}}{2}\frac{1}{\sqrt{3}-1}m$          
         \item $\frac{7\sqrt{3}}{2}\brak{\sqrt{3}+1}m$ 
         \item $\frac{7\sqrt{3}}{2}\brak{\sqrt{3}-1}m$ 
         \item $\frac{7\sqrt{3}}{2}\frac{1}{\sqrt{3}+1}m$
 \end{enumerate}
 \end{multicols} 
 
-\item For a regular polygon, let $r$ and $R$ be the radii of the inscribed and the circumscribed circles. A false statement among the following is \hfill{(2010)}
+\item For a regular polygon, let $r$ and $R$ be the radii of the inscribed and the circumscribed circles. A false statement among the following is \hfill\brak{2010}
 \begin{enumerate}
         \item There is a regular polygon with $\frac{r}{R}=\frac{1}{\sqrt{2}}$                    
         \item There is a regular polygon with $\frac{r}{R}=\frac{2}{3}$ 
         \item There is a regular polygon with $\frac{r}{R}=\frac{\sqrt{3}}{2}$ 
         \item There is a regular polygon with $\frac{r}{R}=\frac{1}{2}$
-\end{enumerate} 
+\end{enumerate}
 
-\item A bird is sitting on the top of a vertical pole $20m$ high and its elevation from a point O on the  ground is $45\degree.$ It flies off horizontally straight away from the point O. After one second, the elevation of the bird from O is reduced to {30\degree.} Then the speed in \brak{in\:m/s} of the bird is \hfill{(JEE M 2014)}
-\begin{multicols}{2}
+\item A bird is sitting on the top of a vertical pole $20m$ high and its elevation from a point $\vec{O}$ on the  ground is $45\degree.$ It flies off horizontally straight away from the point $\vec{O}$. After one second, the elevation of the bird from $\vec{O}$ is reduced to {30\degree.} Then the speed in \brak{in\:m/s} of the bird is \hfill\brak{JEE M 2014}
+\begin{multicols}{4}
 \begin{enumerate}
         \item $20\sqrt{2}$                    
         \item $20\brak{\sqrt{3}-1}$ 
@@ -172,10 +210,9 @@
 \end{enumerate}
 \end{multicols} 
 
-\item If the angle of elevation of the top of a tower from three colinear points $A,B\:and\:C$ on a line leading to foot of the tower, are $30\degree,45\degree \: and \: 60\degree$ respectively, then the ratio, $AB:BC,$ is: 
-
-\hfill{(JEE M 2015)}
-\begin{multicols}{2}
+\item If the angle of elevation of the top of a tower from three colinear points $\vec{A},\vec{B}\text{ and }\vec{C}$ on a line leading to foot of the tower, are $30\degree,45\degree \text{and}  60\degree$ respectively, then the ratio, $\vec{AB}:\vec{BC},$ is: 
+\hfill\brak{JEE M 2015}
+\begin{multicols}{4}
 \begin{enumerate}
         \item $1:\sqrt{3}$                    
         \item $2:3$ 
@@ -184,9 +221,7 @@
 \end{enumerate}
 \end{multicols} 
 
-\item Let a vertical tower AB have its end A on the level ground. Let C be the mid-point of AB and P be a point on the ground such that $AP=2AB.$ If $\angle{BPC}=\beta,$ then $\tan \beta$ is equal to:  
-
-\hfill{(JEE M 2017)}
+\item Let a vertical tower $\vec{AB}$ have its end $\vec{A}$ on the level ground. Let $\vec{C}$ be the  mid-point of $\vec{AB}$ and $\vec{P}$ be a point on the ground such that $\vec{AP}=2\vec{AB}.$ If $\angle{BPC}=\beta,$ then $\tan \beta$ is equal to: \hfill\brak{JEE M 2017}
 \begin{multicols}{4}
 \begin{enumerate}
         \item $\frac{4}{9}$                    
@@ -196,8 +231,8 @@
 \end{enumerate}
 \end{multicols} 
 
-\item PQR is a triangular park with $PQ=PR=200m$. A T.V. tower stands at the mid-point of QR. If the angles of the elevation of the top of the tower at P,Q and R are respectively $45\degree , 30\degree \: and \: 30\degree,$ then the height of the tower \brak{in\:m} is: \hfill{(JEE M 2018)}
-\begin{multicols}{2}
+\item $\vec{PQR}$ is a triangular park with $\vec{PQ}=\vec{PR}=200m$. A T.V. tower stands at the mid-point of $\vec{QR}$. If the angles of the elevation of the top of the tower at $\vec{P,Q \text{ and } R}$ are respectively $45\degree , 30\degree \text{ and } 30\degree,$ then the height of the tower \brak{in\:m} is: \hfill\brak{JEE M 2018}
+\begin{multicols}{4}
 \begin{enumerate}
         \item $50$                    
         \item $100\sqrt{3}$ 
