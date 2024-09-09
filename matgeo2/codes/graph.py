@@ -21,13 +21,19 @@ A = Point(3, 4, 5)
 B = Point(-1, 3, -7)
 K = np.sqrt(161)
 
+# Calculate the distance between points A and B
+def distance(p1, p2):
+    return np.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2)
+
+distance_AB = distance(A, B)
+
 # Center of the sphere is the midpoint of A and B
 center_x = (A.x + B.x) / 2
 center_y = (A.y + B.y) / 2
 center_z = (A.z + B.z) / 2
 
-# Radius of the sphere
-radius = K / 2
+# Calculate the radius of the sphere
+radius = K - distance_AB / 2
 
 # Generate a grid of points in spherical coordinates
 phi, theta = np.mgrid[0:2*np.pi:100j, 0:np.pi:50j]
