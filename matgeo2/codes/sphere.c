@@ -18,31 +18,40 @@ void generate_sphere(int num_latitude, int num_longitude, Point **vertices, int 
     double phi_step = 2 * pi / num_longitude;
 
     // Generate vertices
+    Point *v = *vertices;
     for (int i = 0; i <= num_latitude; ++i) {
         double theta = i * theta_step;
         for (int j = 0; j <= num_longitude; ++j) {
             double phi = j * phi_step;
-            Point *p = &(*vertices)[i * (num_longitude + 1) + j];
-            p->x = sin(theta) * cos(phi);
-            p->y = sin(theta) * sin(phi);
-            p->z = cos(theta);
+            v->x = sin(theta) * cos(phi);
+            v->y = sin(theta) * sin(phi);
+            v->z = cos(theta);
+            ++v; // Move to next Point
         }
     }
 
     // Generate indices
-    int index = 0;
+    int *idx = *indices;
+    Point *p0, *p1, *p2, *p3;
+    Point *row_start, *next_row_start;
+
     for (int i = 0; i < num_latitude; ++i) {
+        row_start = *vertices + i * (num_longitude + 1);
+        next_row_start = row_start + (num_longitude + 1);
+
         for (int j = 0; j < num_longitude; ++j) {
-            int first = i * (num_longitude + 1) + j;
-            int second = first + num_longitude + 1;
+            p0 = row_start + j;
+            p1 = p0 + 1;
+            p2 = next_row_start + j;
+            p3 = p2 + 1;
 
-            (*indices)[index++] = first;
-            (*indices)[index++] = second;
-            (*indices)[index++] = first + 1;
+            *idx++ = (int)(p0 - *vertices);
+            *idx++ = (int)(p2 - *vertices);
+            *idx++ = (int)(p1 - *vertices);
 
-            (*indices)[index++] = second;
-            (*indices)[index++] = second + 1;
-            (*indices)[index++] = first + 1;
+            *idx++ = (int)(p1 - *vertices);
+            *idx++ = (int)(p2 - *vertices);
+            *idx++ = (int)(p3 - *vertices);
         }
     }
 
