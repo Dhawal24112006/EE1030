@@ -62,21 +62,11 @@ vertices[:, 0] += center_x
 vertices[:, 1] += center_y
 vertices[:, 2] += center_z
 
-# Create a list of triangles directly from the vertex data
+# Create a list of triangles
 triangles = []
-num_longitude_plus_one = num_longitude + 1
-
-for i in range(num_latitude):
-    for j in range(num_longitude):
-        # Directly obtain vertices for the current "quad"
-        v0 = vertices[i * num_longitude_plus_one + j]
-        v1 = vertices[i * num_longitude_plus_one + (j + 1)]
-        v2 = vertices[(i + 1) * num_longitude_plus_one + j]
-        v3 = vertices[(i + 1) * num_longitude_plus_one + (j + 1)]
-
-        # Add two triangles for the quad
-        triangles.append([v0, v2, v1])
-        triangles.append([v1, v2, v3])
+for i in range(0, len(indices), 3):
+    triangle = [vertices[indices[i]], vertices[indices[i+1]], vertices[indices[i+2]]]
+    triangles.append(triangle)
 
 # Plotting
 fig = plt.figure(figsize=(10, 8))  # Adjust figure size for better visualization
@@ -104,4 +94,3 @@ ax.set_box_aspect([1,1,1])  # Aspect ratio is 1:1:1
 ax.legend()
 
 plt.show()
-
