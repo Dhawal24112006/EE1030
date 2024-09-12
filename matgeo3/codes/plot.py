@@ -1,5 +1,3 @@
-
-# plot_points.py
 import ctypes
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,15 +5,16 @@ import matplotlib.pyplot as plt
 # Load the shared object
 line_points = ctypes.CDLL('./line_points.so')
 
-# Define the function signature
+# Define the function signatures
 line_points.generate_points.argtypes = (ctypes.c_float * 3, ctypes.c_float * 3, ctypes.POINTER(ctypes.c_float * 3), ctypes.c_int)
+line_points.find_unit_vector.argtypes = (ctypes.c_float * 3, ctypes.c_float * 3, ctypes.POINTER(ctypes.c_float * 3))
 
 def generate_and_plot_points(A, B, n):
-    # Prepare the output array
+    # Prepare the output array for points
     points = np.zeros((n, 3), dtype=np.float32)
     points_c = points.ctypes.data_as(ctypes.POINTER(ctypes.c_float * 3))
 
-    # Call the C function
+    # Call the C function to generate points
     line_points.generate_points(
         (ctypes.c_float * 3)(*A),
         (ctypes.c_float * 3)(*B),
@@ -23,8 +22,24 @@ def generate_and_plot_points(A, B, n):
         n
     )
 
-    # Convert to numpy array for plotting
+    # Prepare the output array for the unit vector
+    unit_vector = (ctypes.c_float * 3)()  # Create a ctypes array of 3 floats
+
+    # Call the C function to find the unit vector
+    line_points.find_unit_vector(
+        (ctypes.c_float * 3)(*A),
+        (ctypes.c_float * 3)(*B),
+        unit_vector
+    )
+
+    # Convert the unit vector to a numpy array
+    unit_vector_np = np.array(unit_vector)
+
+    # Convert points to numpy array for plotting
     points = np.array(points)
+
+    # Print the unit vector
+    print(f"Unit vector from A to B: {unit_vector_np}")
 
     # Plot the points
     fig = plt.figure()
