@@ -1,55 +1,66 @@
 
-import ctypes
 import numpy as np
 import matplotlib.pyplot as plt
+import ctypes
 
-# Load the shared object file
-triangle_lib = ctypes.CDLL('./triangle_points.so')
+# Load the shared libraries
+lib_calculate = ctypes.CDLL('./libtriangle_calculate.so')
+lib_points = ctypes.CDLL('./libline_points.so')
 
-# Define the argument and return types
-triangle_lib.generate_triangle_vertices.argtypes = [ctypes.c_double, ctypes.c_double, ctypes.c_double, ctypes.POINTER(ctypes.c_double)]
+# Define the C functions we want to call for calculating C
+lib_calculate.calculate_point_C.argtypes = [np.ctypeslib.ndpointer(dtype=np.float32, ndim=1, shape=(2,)),
+                                             np.ctypeslib.ndpointer(dtype=np.float32, ndim=1, shape=(2,)),
+                                             ctypes.c_float,
+                                             ctypes.c_float,
+                                             np.ctypeslib.ndpointer(dtype=np.float32, ndim=1, shape=(2,))]
 
-# Parameters for the triangle
-AB = 5.0  # Length of AB in cm
-BC = 6.0  # Length of BC in cm
-angle_B = 60.0  # Angle at B in degrees
+# Define the C functions we want to call for generating points
+lib_points.generate_points.argtypes = [np.ctypeslib.ndpointer(dtype=np.float32, ndim=1, shape=(3,)),
+                                        np.ctypeslib.ndpointer(dtype=np.float32, ndim=1, shape=(3,)),
+                                        np.ctypeslib.ndpointer(dtype=np.float32, ndim=2, shape=(10, 3)),
+                                        ctypes.c_int]
 
-# Create an array to hold the vertices
-vertices = (ctypes.c_double * 6)()  # Array to hold x1, y1, x2, y2, x3, y3
+# Points A and B
+A = np.array([6.0, 0.0], dtype=np.float32)
+B = np.array([0.0, 0.0], dtype=np.float32)
+BC = 8.0
+angle = np.pi / 3  # 60 degrees
 
-# Call the function
-triangle_lib.generate_triangle_vertices(AB, BC, angle_B, vertices)
+# Calculate point C
+C = np.zeros(2, dtype=np.float32)
+lib_calculate.calculate_point_C(A, B, BC, angle, C)
 
-# Extract the vertices
-A = (vertices[0], vertices[1])
-B = (vertices[2], vertices[3])
-C = (vertices[4], vertices[5])
+# Generate points along AB and BC
+n_points = 10
+points_AB = np.zeros((n_points, 3), dtype=np.float32)
+points_BC = np.zeros((n_points, 3), dtype=np.float32)
 
-# Create lists of points for plotting
-points_AB = np.array([A, B])
-points_BC = np.array([B, C])
-points_CA = np.array([C, A])
+# Extend A and B to 3D (Z=0)
+A_3D = np.array([A[0], A[1], 0.0], dtype=np.float32)
+B_3D = np.array([B[0], B[1], 0.0], dtype=np.float32)
+C_3D = np.array([C[0], C[1], 0.0], dtype=np.float32)
 
-# Plotting
+lib_points.generate_points(A_3D, B_3D, points_AB, n_points)
+lib_points.generate_points(B_3D, C_3D, points_BC, n_points)
+
+# Plotting the triangle
 plt.figure()
+plt.plot([B[0], A[0]], [B[1], A[1]], 'ro-')  # AB
+plt.plot([B[0], C[0]], [B[1], C[1]], 'ro-')  # BC
+plt.plot([A[0], C[0]], [A[1], C[1]], 'ro-')  # AC
+plt.fill([B[0], A[0], C[0]], [B[1], A[1], C[1]], 'b', alpha=0.3)
 
-# Plot each line in a different color
-plt.plot(points_AB[:, 0], points_AB[:, 1], marker='o', color='blue', label='Line AB')
-plt.plot(points_BC[:, 0], points_BC[:, 1], marker='o', color='green', label='Line BC')
-plt.plot(points_CA[:, 0], points_CA[:, 1], marker='o', color='red', label='Line CA')
+# Annotate points A, B, and C
+plt.text(A[0], A[1], f'A({A[0]}, {A[1]})', fontsize=12, ha='right', color='black')
+plt.text(B[0], B[1], f'B({B[0]}, {B[1]})', fontsize=12, ha='right', color='black')
+plt.text(C[0], C[1], f'C({C[0]:.2f}, {C[1]:.2f})', fontsize=12, ha='right', color='black')
 
-# Mark the points A, B, and C
-plt.text(A[0], A[1], 'A', fontsize=12, ha='right')
-plt.text(B[0], B[1], 'B', fontsize=12, ha='left')
-plt.text(C[0], C[1], 'C', fontsize=12, ha='center')
-
-plt.xlim(-1, max(vertices[2], vertices[4]) + 1)
-plt.ylim(-1, max(vertices[5], 1) + 1)
+# Set graph limits and labels
+plt.xlim(-1, 10)
+plt.ylim(-1, 10)
 plt.title('Triangle ABC')
-plt.xlabel('X-axis (cm)')
-plt.ylabel('Y-axis (cm)')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
 plt.grid()
-plt.axis('equal')
-plt.legend()
 plt.show()
 
