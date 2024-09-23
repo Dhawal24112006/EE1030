@@ -60,19 +60,25 @@
   \caption{Variables given}
   \label{tab 1.4.9.2}
 \end{table}
+
 Solution:\\
 As $AB=6cm$ put:
 \begin{align}
        \vec{A}=\myvec{6\\0}, \vec{B}=\myvec{0\\0},
 \end{align}
-Then,
+Let R be rotational matrix;
+Then
 \begin{align}
-	\vec{C}=\myvec{BC\cos{60\degree}\\BC\sin{60\degree}}=\myvec{4\\4\sqrt{3}}
+	BC=R(\ang{60})\myvec{8\\0}=\myvec{\frac{1}{2}&&\frac{-\sqrt{3}}{2}\\\frac{\sqrt{3}}{2}&&\frac{1}{2}}\myvec{8\\0}=\myvec{4\\4\sqrt{3}}
 \end{align}
-
+Hence
+\begin{align}
+	\vec{C}=\myvec{4\\4\sqrt{3}}
+\end{align}
+Plot:
 \begin{figure}[h!]
    \centering
-   \includegraphics[width=1\linewidth]{Figure_1.png}
+   \includegraphics[width=0.9\linewidth]{Figure_1.png}
 	\caption{$\Delta ABC$ }
    \label{stemplot}
 \end{figure}
