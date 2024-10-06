@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import ctypes
 from scipy.optimize import fsolve
+from scipy.integrate import quad
 
 # Load the shared libraries
 line_lib = ctypes.CDLL('./line_points.so')
@@ -44,6 +45,14 @@ x_intersect_2 = fsolve(equations, 5)[0]   # Second intersection, close to 5
 
 y_intersect_1 = line_eq(x_intersect_1)  # y-coordinate of first intersection
 y_intersect_2 = line_eq(x_intersect_2)  # y-coordinate of second intersection
+
+# Calculate the area between the curves
+def integrand(x):
+    return abs(parabola_eq(x) - line_eq(x))
+
+area, _ = quad(integrand, x_intersect_1, x_intersect_2)
+
+print(f"Area between the line and the parabola: {area:.4f}")
 
 # Plot the figures
 plt.figure(figsize=(10, 6))
