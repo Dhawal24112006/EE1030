@@ -1,22 +1,15 @@
-%iffalse
+\let\negmedspace\undefined
+\let\negthickspace\undefined
 \documentclass[journal]{IEEEtran}
-\usepackage[a5paper, margin=10mm]{geometry}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
 %\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
 \usepackage{tfrupee} % Include tfrupee package
 
-
 \setlength{\headheight}{1cm} % Set the height of the header box
-\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+\setlength{\headsep}{0mm}  % Set the distance between the header box and the top of the text
 
-
-%\usepackage[a5paper, top=10mm, bottom=10mm, left=10mm, right=10mm]{geometry}
-
-%
-\setlength{\intextsep}{10pt} % Space between text and floats
-
-\makeindex
-
-
+\usepackage{gvv-book}
+\usepackage{gvv}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{algorithmic}
@@ -32,10 +25,8 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{tkz-euclide} 
 \usepackage{listings}
-\usepackage{multicol}
-\usepackage{xparse}
-\usepackage{gvv}
-%\def\inputGnumericTable{}                                 
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
 \usepackage[latin1]{inputenc}                                
 \usepackage{color}                                            
 \usepackage{array}                                            
@@ -43,36 +34,30 @@
 \usepackage{calc}                                             
 \usepackage{multirow}                                         
 \usepackage{hhline}                                           
-\usepackage{ifthen}                                               
+\usepackage{ifthen}                                           
 \usepackage{lscape}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{float}
-
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{problem}{Problem}
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{example}{Example}[section]
-\newtheorem{definition}[problem]{Definition}
-\newcommand{\BEQA}{\begin{eqnarray}}
-\newcommand{\EEQA}{\end{eqnarray}}
-
-\theoremstyle{remark}
-
-
+\usepackage{tikz}
+\usetikzlibrary{patterns}
 \begin{document}
-\bibliographystyle{IEEEtran}
-\onecolumn
 
-\title{GATE 2007 AE 18-24}
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+
+
+\title{GATE 2007 AE 18-34}
 \author{ee24btech11015 - Dhawal}
 \maketitle
+% \maketitle
+% \newpage
+% \bigskip
+{\let\newpage\relax\maketitle}
 
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+
+
+
 
 \begin{enumerate}[start=18]
 	\item Across a normal shock
@@ -113,10 +98,10 @@
 
 \item  Let $P$ and $Q$ be two square matrices of same size. Consider the following statements
 \begin{align}
-    PQ=0 \text{ implies } P=0 \text{ or } Q=0 \text{ or both }
+    PQ=0  \implies  P=0 \text{ or } Q=0 \text{ or both }
 \end{align}
 \begin{align}
-    PQ=I^2 \text{ implies } P=Q^{-1}
+    PQ=I^2 \implies  P=Q^{-1}
 \end{align}
 \begin{align}
     {\brak{P+Q}}^2 =P^2+2PQ+Q^2
@@ -155,8 +140,36 @@ where $I$ is the identity matrix. Which of the following statements is correct?
 \end{multicols}
 
 \item  Shown in the figure below is a model of an Euler-Bernoulli beam made up of two materials subjected to pure bending moment $M$. The Young's modulus of material A and B are $E_A$ and $E_B$, respectively. The sectional moment of area, about the neutral axis, of the cross-sectional areas made of materials A and B, are $I_A$ and $I_B$, respectively. The radius of curvature $\rho$ of the flexural deflection of this composite beam to the bending moment $M$ is then:
+
+
 \begin{center}
-    \includegraphics[width=0.6\textwidth]{beam.png}
+    
+
+    \begin{circuitikz}[scale=0.8]
+\tikzstyle{every node}=[font=\normalsize]
+\draw  (2,8.75) rectangle (7.25,5.75);
+\draw  (2,9.25) rectangle (7.25,8.75);
+\draw  (2,5.75) rectangle (7.25,5.25);
+\draw [dashed] (0,7.25) -- (9.5,7.25);
+\draw [short] (2,9.25) -- (2.5,8.75);
+\draw [short] (3,9.25) -- (3.5,8.75);
+\draw [short] (4,9.25) -- (4.5,8.75);
+\draw [short] (5,9.25) -- (5.5,8.75);
+\draw [short] (6,9.25) -- (6.5,8.75);
+\draw [short] (6.75,9.25) -- (7.25,8.75);
+\draw [short] (2,5.75) -- (2.5,5.25);
+\draw [short] (2.75,5.75) -- (3.25,5.25);
+\draw [short] (3.5,5.75) -- (4,5.25);
+\draw [short] (4.25,5.75) -- (4.75,5.25);
+\draw [short] (5.25,5.75) -- (5.75,5.25);
+\draw [short] (6.25,5.75) -- (6.75,5.25);
+% Draw the bending moments (arrows and labels) on both sides
+\draw[thick,->] (1,7.25) arc[start angle=0, end angle=300, radius=1]; % Left moment arrow
+\draw[thick,->] (8,7.25) arc[start angle=180, end angle=480, radius=1]; % Right moment arrow
+\node [font=\normalsize] at (4.75,9) {$E_A,I_A$};
+\node [font=\LARGE] at (5,9) {};
+\node [font=\normalsize] at (4.5,8) { $E_B,I_B$};
+\end{circuitikz}
 \end{center}
 
 
