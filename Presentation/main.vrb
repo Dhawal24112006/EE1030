@@ -1,0 +1,17 @@
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+plt.figure(figsize=(10, 6))
+plt.plot(x_points, y_line_points, 'r', label='Line: y = 1.5x + 6')
+plt.plot(x_points, y_parabola_points, 'g', label='Parabola: y = 0.75x^2')
+plt.fill_between(x_points, y_line_points, y_parabola_points,
+                 where=((x_points >= x_intersect_1) & (x_points <= x_intersect_2)),
+                 color='gray', alpha=0.5, label='Area between')
+plt.scatter([x_intersect_1, x_intersect_2], [y_intersect_1, y_intersect_2], color='blue', s=100, zorder=5)
+plt.text(x_intersect_1, y_intersect_1, f'({x_intersect_1:.2f}, {y_intersect_1:.2f})', fontsize=12, ha='right')
+plt.text(x_intersect_2, y_intersect_2, f'({x_intersect_2:.2f}, {y_intersect_2:.2f})', fontsize=12, ha='left')
+plt.legend()
+plt.title('Area Between Line and Parabola')
+plt.grid(True)
+plt.show()
+
+\end{lstlisting}
