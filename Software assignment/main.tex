@@ -1,0 +1,100 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\title{\textbf{Software Assignment Report}\\[10pt]
+\textbf{Computing Eigenvalues}}
+\author{Dhawal - EE24BTECH11015}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{Introduction}
+Eigenvalues and eigenvectors are fundamental concepts in linear algebra with applications spanning science and engineering. Eigenvalues provide critical insights into the properties of matrices, revealing key characteristics such as stability and resonance. Eigenvectors, which correspond to eigenvalues, identify the directions along which linear transformations act by merely scaling, without rotation. Together, they form the cornerstone of matrix diagonalization and matrix-powered methods, enabling simplified computations. From analyzing vibrations in mechanical systems to determining principal components in data analysis, eigenvalues and eigenvectors are invaluable tools for understanding complex linear transformations.
+
+\section*{Uses of Eigenvalues and Eigenvectors}
+Eigenvalues and eigenvectors have numerous practical applications across diverse fields. In physics, they are used to analyze the vibrational modes of molecules and structures. Engineering heavily relies on eigenvalues for stability analysis, particularly in systems like control systems and electrical circuits. In computer science, eigenvalues play a central role in spectral graph theory, image compression, and machine learning, where they underpin algorithms such as Principal Component Analysis (PCA). Similarly, eigenvalues are used in quantum mechanics to determine energy states and in differential equations to solve systems of equations with boundary conditions. Additionally, they simplify the computation of matrix powers and exponential functions, aiding dynamic systems' study. Their ubiquity stems from their ability to simplify complex systems, providing a clearer understanding of transformations, system stability, and optimization tasks. Eigenvalues and eigenvectors thus offer indispensable tools for modern problem-solving.
+
+\newpage
+\section*{Methods for Computing Eigenvalues and Eigenvectors}
+
+\subsection*{1. Power Method}
+The power method is an iterative technique for finding the dominant eigenvalue and its corresponding eigenvector of a matrix. It starts with an initial guess for the eigenvector and repeatedly applies the matrix to approximate the eigenvalue.
+
+\textbf{Advantages:}  
+- Simple and computationally inexpensive.  
+
+\textbf{Disadvantages:}  
+- Only retrieves the largest eigenvalue.  
+- Sensitive to matrix conditioning.
+
+\subsection*{2. Inverse Power Method}
+The inverse power method extends the power method to compute the smallest eigenvalue by inverting the matrix before applying iterations. It effectively locates eigenvalues near a given shift.
+
+\textbf{Advantages:}  
+- Finds eigenvalues closest to a chosen value.  
+
+\textbf{Disadvantages:}  
+- Requires matrix inversion, which is computationally expensive for large matrices.
+
+\subsection*{3. Jacobi Method}
+The Jacobi method iteratively diagonalizes a symmetric matrix by rotating it to eliminate off-diagonal elements. It is suitable for dense matrices and provides all eigenvalues simultaneously.
+
+\textbf{Advantages:}  
+- Simple and well-suited for symmetric matrices.  
+
+\textbf{Disadvantages:}  
+- Slow convergence for large matrices.  
+- Inefficient for sparse systems.
+
+\subsection*{4. QR Iteration Method}
+QR iteration is a powerful method for finding all eigenvalues of a matrix. It involves successive QR factorizations and matrix multiplications to reduce the matrix to a nearly diagonal form.
+
+\textbf{Advantages:}  
+- Robust and computes all eigenvalues.  
+- Applicable to any matrix.  
+
+\textbf{Disadvantages:}  
+- Computationally intensive for very large matrices.
+
+\subsection*{5. Arnoldi Iteration}
+The Arnoldi method extends the power method for large sparse matrices by approximating eigenvalues using Krylov subspaces. It is commonly used in numerical simulations.
+
+\textbf{Advantages:}  
+- Efficient for sparse systems.  
+- Finds multiple eigenvalues.  
+
+\textbf{Disadvantages:}  
+- Complex implementation.  
+- Requires good initial approximations.
+
+\newpage
+\section*{QR Decomposition and its Advantages}
+QR decomposition is a highly effective algorithm for computing eigenvalues, especially for dense matrices. Its iterative nature ensures convergence for a wide range of matrices, regardless of symmetry or sparsity. The method involves decomposing a matrix into an orthogonal matrix \( Q \) and an upper triangular matrix \( R \), followed by successive multiplications of \( RQ \). This approach systematically drives the matrix toward an upper triangular form, where eigenvalues appear on the diagonal.
+
+\textbf{Advantages of QR Decomposition:}
+\begin{itemize}
+    \item Accuracy: The method preserves numerical stability through orthogonal transformations.
+    \item General Applicability: It works for both real and complex matrices.
+    \item Parallelization Potential: QR factorizations can be efficiently parallelized, making them suitable for high-performance computing.
+\end{itemize}
+
+Unlike the power method, which is limited to dominant eigenvalues, QR decomposition yields all eigenvalues simultaneously. Compared to the Jacobi method, QR is faster for non-symmetric matrices. Its flexibility, precision, and robustness make it the preferred choice for computing eigenvalues in scientific and engineering applications. Furthermore, the QR iteration's modular structure allows easy extensions to compute eigenvectors, as demonstrated in this assignment.
+
+\section*{Why I Used the QR Decomposition Method}
+The QR decomposition method was chosen due to its robustness, accuracy, and versatility in computing eigenvalues and eigenvectors. Unlike other methods, QR decomposition works efficiently for both symmetric and non-symmetric matrices, making it a generalized approach. Its iterative nature ensures that the matrix gradually converges to an upper triangular form, where the eigenvalues are revealed on the diagonal. Furthermore, QR decomposition is numerically stable because it relies on orthogonal transformations, which minimize errors during computation. This method's ability to find all eigenvalues and eigenvectors simultaneously makes it the most suitable choice for this assignment.
+
+\section*{Explanation of the Code}
+The code begins by defining a structure for complex numbers, with functions to handle arithmetic operations, matrix copying, and printing. It implements the QR decomposition method to calculate eigenvalues and eigenvectors of a complex matrix. The qrDecomposition function splits a matrix into orthogonal \( Q \) and upper triangular \( R \) matrices. Successive multiplications of \( RQ \) iteratively transform the matrix into an upper triangular form. The eigenvalues are extracted from the diagonal, while eigenvectors are computed by multiplying accumulated \( Q \) matrices. The program is designed to handle both real and complex matrices, ensuring flexibility and accuracy.
+
+\section*{Conclusion}
+Eigenvalues and eigenvectors are pivotal in understanding linear transformations and solving practical problems in various disciplines. Among the methods for eigenvalue computation, QR decomposition stands out as the most versatile and reliable, capable of handling diverse matrix types with high accuracy. This assignment demonstrated the QR method's efficacy, showcasing its ability to compute both eigenvalues and eigenvectors efficiently. By leveraging the orthogonal transformations inherent in the QR algorithm, it achieves numerical stability and convergence, making it a cornerstone technique in computational mathematics. This report highlights the importance of choosing robust algorithms like QR decomposition for solving complex matrix-related challenges in modern science and engineering.
+
+\end{document}
